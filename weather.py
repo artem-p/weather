@@ -2,26 +2,36 @@
 import requests
 import datetime
 
-query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/lang:ru/q/Russia/St_Petersburg.json'
+query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/forecast/lang:RU/q/Russia/St_Petersburg.json'
 current_weather_response = requests.get(query)
 current_weather_response.text
 current_observation = current_weather_response.json()['current_observation']
 city = current_observation['display_location']['city']
 
-time = datetime.datetime.fromtimestamp(1462644000)
+time = datetime.datetime.fromtimestamp(int(current_observation['observation_epoch']))
 time.strftime("%d.%m.%Y %H:%M")
+weather = current_observation['weather']
+temp = current_observation['temp_c']
+feelslike = current_observation['feelslike_c']
+wind_dir = current_observation['wind_degrees']
+wind_kph = current_observation['wind_kph']
+
+
+sTemp = str(temp) + " °C"
+sFeelslike = str(feelslike) + " °C"
+city
+time
+weather
+sTemp
+sFeelslike
+wind_dir
+wind_kph
 
 
 def time_str_from_epoch(time_epoch):
     time_from_epoch = datetime.datetime.fromtimestamp(time_epoch)
     return time_from_epoch.strftime("%d.%m.%Y %H:%M")
 
-
-def test_time_from_epoch():
-    time_epoch = 1462644000
-    assert time_str_from_epoch(time_epoch) == "07.05.2016 21:00"
-    time_epoch = 1462656600
-    assert time_str_from_epoch(time_epoch) == "08.05.2016 00:30"
 
 # Сделать из метки нормальное время с юнит-тестом
 # "observation_epoch":"1462644000",
