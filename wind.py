@@ -1,4 +1,4 @@
-def getRhumbsByWd(wd):
+def get_rhumbs_by_wind_dir(wd):
     #   Получаем направление ветра в румбах по градусам
     WD_MIN = 0
     WD_MAX = 359
@@ -57,4 +57,3 @@ def getRhumbsByWd(wd):
                 rhumbWind = NORTH_WEST_TEXT
     return rhumbWind
 
-getRhumbsByWd(6)
