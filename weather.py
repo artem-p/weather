@@ -1,8 +1,9 @@
 # coding: utf-8
 import requests
 import datetime
+import wind
 
-query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/forecast/lang:RU/q/Russia/St_Petersburg.json'
+query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/lang:RU/q/Russia/St_Petersburg.json'
 current_weather_response = requests.get(query)
 current_weather_response.text
 current_observation = current_weather_response.json()['current_observation']
@@ -14,6 +15,7 @@ weather = current_observation['weather']
 temp = current_observation['temp_c']
 feelslike = current_observation['feelslike_c']
 wind_dir = current_observation['wind_degrees']
+wind_rhumbs = wind.get_rhumbs_by_wind_dir(wind_dir)
 wind_kph = current_observation['wind_kph']
 
 
@@ -25,6 +27,7 @@ weather
 sTemp
 sFeelslike
 wind_dir
+wind_rhumbs
 wind_kph
 
 
