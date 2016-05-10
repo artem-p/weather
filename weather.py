@@ -17,6 +17,7 @@ feelslike = current_observation['feelslike_c']
 wind_dir = current_observation['wind_degrees']
 wind_rhumbs = wind.get_rhumbs_by_wind_dir(wind_dir)
 wind_kph = current_observation['wind_kph']
+wind_mps = wind.get_mps_by_kph(wind_kph)
 
 
 sTemp = str(temp) + " °C"
@@ -29,6 +30,7 @@ sFeelslike
 wind_dir
 wind_rhumbs
 wind_kph
+wind_mps
 
 
 def time_str_from_epoch(time_epoch):

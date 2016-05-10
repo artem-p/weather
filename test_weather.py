@@ -20,3 +20,9 @@ def test_get_wind_rhumbs():
   assert wind.get_rhumbs_by_wind_dir(136) == "ЮВ"
   assert wind.get_rhumbs_by_wind_dir(216) == "ЮЗ"
   assert wind.get_rhumbs_by_wind_dir(301) == "СЗ"
+
+
+def test_mps_by_kph():
+  assert wind.get_mps_by_kph(7) == 1.9444460000000001
+  assert wind.get_mps_by_kph(10) == 2.7777800000000004
+  assert wind.get_mps_by_kph(60) == 16.666680000000003

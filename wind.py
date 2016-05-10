@@ -57,3 +57,10 @@ def get_rhumbs_by_wind_dir(wd):
                 rhumbWind = NORTH_WEST_TEXT
     return rhumbWind
 
+
+def get_mps_by_kph(kph):
+  mps = kph*0.277778
+  return mps
+
+
+get_mps_by_kph(60)
