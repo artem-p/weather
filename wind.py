@@ -63,4 +63,6 @@ def get_mps_by_kph(kph):
   return mps
 
 
-get_mps_by_kph(60)
+def format_wind_mps(wind_mps):
+  # Форматируем скорость ветра для вывода. Оставляем 1 знак после запятой
+  return "{:.1f}".format(wind_mps)

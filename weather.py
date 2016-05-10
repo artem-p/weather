@@ -18,6 +18,7 @@ wind_dir = current_observation['wind_degrees']
 wind_rhumbs = wind.get_rhumbs_by_wind_dir(wind_dir)
 wind_kph = current_observation['wind_kph']
 wind_mps = wind.get_mps_by_kph(wind_kph)
+wind_mps_formatted = wind.format_wind_mps(wind_mps)
 
 
 sTemp = str(temp) + " °C"
@@ -31,6 +32,7 @@ wind_dir
 wind_rhumbs
 wind_kph
 wind_mps
+# wind.format_wind_mps(wind_mps)
 
 
 def time_str_from_epoch(time_epoch):
