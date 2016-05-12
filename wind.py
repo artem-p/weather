@@ -65,8 +65,7 @@ class Wind():
 
   def to_text(self):
     self.to_rhumbs()
-    return """%s
-%s м/с""" % (self.to_rhumbs(), self.format_wind_mps(self.get_mps_by_kph(self.kph)))
+    return "%s %s м/с" % (self.to_rhumbs(), self.format_wind_mps(self.get_mps_by_kph(self.kph)))
 
 
   def get_mps_by_kph(self, kph):
@@ -78,6 +77,3 @@ class Wind():
     # Форматируем скорость ветра для вывода. Оставляем 1 знак после запятой
     return "{:.1f}".format(wind_mps)
 
-
-wind = Wind(0, 0)
-wind.to_text()

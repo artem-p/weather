@@ -44,17 +44,30 @@ def test_format_wind_mps():
 
 def test_wind_output():
   cur_wind = wind.Wind(0, 0)
-  assert cur_wind.to_text () == """С
-0.0 м/с"""
+  assert cur_wind.to_text () == "С 0.0 м/с"
 
   cur_wind = wind.Wind(10, 90)
-  assert cur_wind.to_text () == """В
-2.8 м/с"""
+  assert cur_wind.to_text () == "В 2.8 м/с"
 
   cur_wind = wind.Wind(7, 216)
-  assert cur_wind.to_text () == """ЮЗ
-1.9 м/с"""
+  assert cur_wind.to_text () == "ЮЗ 1.9 м/с"
 
   cur_wind = wind.Wind(60, 301)
-  assert cur_wind.to_text () == """СЗ
-16.7 м/с"""
+  assert cur_wind.to_text () == "СЗ 16.7 м/с"
+
+
+def test_current_weather_output():
+  current_weather = weather.CurrentWeather(None)
+  current_weather.city = "Санкт-Петербург"
+  current_weather.time = "2016-05-12 14:30"
+  current_weather.conditions = "Ясно"
+  current_weather.temp = 14
+  current_weather.feelslike = 14
+  current_weather.wind_dir = 130
+  current_weather.wind_kph = 11
+  assert current_weather.to_text() == """Санкт-Петербург
+2016-05-12 14:30
+Ясно
+Температура: 14 °C
+Ощущается как: 14 °C
+Ветер: ЮВ 3.1 м/с"""

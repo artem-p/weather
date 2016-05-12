@@ -9,37 +9,52 @@ class CurrentWeather:
 
   def parse(self):
     # parse response result
+    current_weather.city = None
+    current_weather.time = None
+    current_weather.conditions = None
+    current_weather.temp = None
+    current_weather.feelslike = None
+    current_weather.wind_dir = None
+    current_weather.wind_kph = None
+    if self.json_weather:
+      current_observation = self.json_weather['current_observation']
     pass
 
-  def toText(self):
+  def to_text(self):
     # Преобразуем в текст для вывода
     self.parse()
     self.wind = wind.Wind(self.wind_kph, self.wind_dir)
-    text = """
-      %s
-      %d °C
-      %d °C
-    """ %(self.city, self.temp, self.feelslike)
+    textPart = """%s
+%s
+%s
+Температура: %d °C
+Ощущается как: %d °C
+Ветер: """ %(self.city, self.time, self.conditions, self.temp, self.feelslike)
+    text = textPart + self.wind.to_text()
     return text
 
-
-# query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/lang:RU/q/Russia/Moscow.json'
-# current_weather_response = requests.get(query)
+# if __name__ == "__main__":
+query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/lang:RU/q/Russia/St_Petersburg.json'
+current_weather_response = requests.get(query)
+current_weather_response.json()['current_observation']
 # current_weather_response.text
 
-# current_weather = CurrentWeather(current_weather_response.json())
+current_weather = CurrentWeather(current_weather_response.json())
+current_weather.json_weather
+# current_observation = current_weather.json_weather['current_observation']
+current_weather.to_text()
 
 
 
-current_weather = CurrentWeather(None)
-current_weather.city = "Санкт-Петербург"
-current_weather.time = "2016-05-12 14:30:00"
-current_weather.conditions = "Ясно"
-current_weather.temp = 14
-current_weather.feelslike = 14
-current_weather.wind_dir = 130
-current_weather.wind_kph = 11
-current_weather.toText()
+# current_weather = CurrentWeather(None)
+# current_weather.city = "Санкт-Петербург"
+# current_weather.time = "2016-05-12 14:30"
+# current_weather.conditions = "Ясно"
+# current_weather.temp = 14
+# current_weather.feelslike = 14
+# current_weather.wind_dir = 130
+# current_weather.wind_kph = 11
+# current_weather.to_text()
 
 def get_current_weather():
   query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/lang:RU/q/Russia/St_Petersburg.json'
