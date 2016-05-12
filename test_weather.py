@@ -24,8 +24,7 @@ def test_get_wind_rhumbs():
 
 def check_wind_rhumbs(wd, rhumbs_expected):
   cur_wind = wind.Wind(1, wd)
-  cur_wind.to_rhumbs()
-  assert cur_wind.rhumbs == rhumbs_expected
+  assert cur_wind.to_rhumbs() == rhumbs_expected
 
 
 def test_mps_by_kph():
@@ -43,5 +42,19 @@ def test_format_wind_mps():
   assert cur_wind.format_wind_mps(16.666680000000003) == "16.7"
 
 
-# def test_convert_current_weather_to_text():
+def test_wind_output():
+  cur_wind = wind.Wind(0, 0)
+  assert cur_wind.to_text () == """С
+0.0 м/с"""
 
+  cur_wind = wind.Wind(10, 90)
+  assert cur_wind.to_text () == """В
+2.8 м/с"""
+
+  cur_wind = wind.Wind(7, 216)
+  assert cur_wind.to_text () == """ЮЗ
+1.9 м/с"""
+
+  cur_wind = wind.Wind(60, 301)
+  assert cur_wind.to_text () == """СЗ
+16.7 м/с"""

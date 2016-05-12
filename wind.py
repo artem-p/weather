@@ -61,10 +61,12 @@ class Wind():
                 rhumbWind = WEST_TEXT
             elif NORTH_WEST_MIN <= self.wd <= NORTH_WEST_MAX:
                 rhumbWind = NORTH_WEST_TEXT
-    self.rhumbs = rhumbWind
+    return rhumbWind
 
   def to_text(self):
     self.to_rhumbs()
+    return """%s
+%s м/с""" % (self.to_rhumbs(), self.format_wind_mps(self.get_mps_by_kph(self.kph)))
 
 
   def get_mps_by_kph(self, kph):
@@ -75,3 +77,7 @@ class Wind():
   def format_wind_mps(self, wind_mps):
     # Форматируем скорость ветра для вывода. Оставляем 1 знак после запятой
     return "{:.1f}".format(wind_mps)
+
+
+wind = Wind(0, 0)
+wind.to_text()
