@@ -1,3 +1,4 @@
+# coding: utf-8
 def get_rhumbs_by_wind_dir(wd):
     #   Получаем направление ветра в румбах по градусам
     WD_MIN = 0

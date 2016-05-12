@@ -32,7 +32,7 @@ wind_dir
 wind_rhumbs
 wind_kph
 wind_mps
-# wind.format_wind_mps(wind_mps)
+wind.format_wind_mps(wind_mps)
 
 
 def time_str_from_epoch(time_epoch):

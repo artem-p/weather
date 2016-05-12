@@ -26,3 +26,11 @@ def test_mps_by_kph():
   assert wind.get_mps_by_kph(7) == 1.9444460000000001
   assert wind.get_mps_by_kph(10) == 2.7777800000000004
   assert wind.get_mps_by_kph(60) == 16.666680000000003
+
+
+def test_format_wind_mps():
+  assert wind.format_wind_mps(3.8888920000000002) == "3.9"
+  assert wind.format_wind_mps(1.9444460000000001) == "1.9"
+  assert wind.format_wind_mps(2.7777800000000004) == "2.8"
+  assert wind.format_wind_mps(16.666680000000003) == "16.7"
+
