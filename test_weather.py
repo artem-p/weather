@@ -9,28 +9,39 @@ def test_time_from_epoch():
 
 
 def test_get_wind_rhumbs():
-  assert wind.get_rhumbs_by_wind_dir(360) == None
-  assert wind.get_rhumbs_by_wind_dir(0) == "С"
-  assert wind.get_rhumbs_by_wind_dir(359) == "С"
-  assert wind.get_rhumbs_by_wind_dir(1) == "С"
-  assert wind.get_rhumbs_by_wind_dir(180) == "Ю"
-  assert wind.get_rhumbs_by_wind_dir(90) == "В"
-  assert wind.get_rhumbs_by_wind_dir(270) == "З"
-  assert wind.get_rhumbs_by_wind_dir(25) == "СВ"
-  assert wind.get_rhumbs_by_wind_dir(136) == "ЮВ"
-  assert wind.get_rhumbs_by_wind_dir(216) == "ЮЗ"
-  assert wind.get_rhumbs_by_wind_dir(301) == "СЗ"
+  check_wind_rhumbs(360, None)
+  check_wind_rhumbs(0, "С")
+  check_wind_rhumbs(359, "С")
+  check_wind_rhumbs(1, "С")
+  check_wind_rhumbs(180, "Ю")
+  check_wind_rhumbs(90, "В")
+  check_wind_rhumbs(270, "З")
+  check_wind_rhumbs(25, "СВ")
+  check_wind_rhumbs(136, "ЮВ")
+  check_wind_rhumbs(216, "ЮЗ")
+  check_wind_rhumbs(301, "СЗ")
+
+
+def check_wind_rhumbs(wd, rhumbs_expected):
+  cur_wind = wind.Wind(1, wd)
+  cur_wind.to_rhumbs()
+  assert cur_wind.rhumbs == rhumbs_expected
 
 
 def test_mps_by_kph():
-  assert wind.get_mps_by_kph(7) == 1.9444460000000001
-  assert wind.get_mps_by_kph(10) == 2.7777800000000004
-  assert wind.get_mps_by_kph(60) == 16.666680000000003
+  cur_wind = wind.Wind(0, 0)
+  assert cur_wind.get_mps_by_kph(7) == 1.9444460000000001
+  assert cur_wind.get_mps_by_kph(10) == 2.7777800000000004
+  assert cur_wind.get_mps_by_kph(60) == 16.666680000000003
 
 
 def test_format_wind_mps():
-  assert wind.format_wind_mps(3.8888920000000002) == "3.9"
-  assert wind.format_wind_mps(1.9444460000000001) == "1.9"
-  assert wind.format_wind_mps(2.7777800000000004) == "2.8"
-  assert wind.format_wind_mps(16.666680000000003) == "16.7"
+  cur_wind = wind.Wind(0, 0)
+  assert cur_wind.format_wind_mps(3.8888920000000002) == "3.9"
+  assert cur_wind.format_wind_mps(1.9444460000000001) == "1.9"
+  assert cur_wind.format_wind_mps(2.7777800000000004) == "2.8"
+  assert cur_wind.format_wind_mps(16.666680000000003) == "16.7"
+
+
+# def test_convert_current_weather_to_text():
 
