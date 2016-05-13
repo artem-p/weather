@@ -3,9 +3,6 @@ import requests
 import datetime
 import wind
 
-if __name__ == "__main__":
-  get_current_weather()
-
 class CurrentWeather:
   def __init__(self, current_weather_json):
     self.json_weather = current_weather_json
@@ -60,6 +57,9 @@ def time_str_from_epoch(time_epoch):
     time_from_epoch = datetime.datetime.fromtimestamp(time_epoch)
     return time_from_epoch.strftime("%d.%m.%Y %H:%M")
 
+
+if __name__ == "__main__":
+  print(get_current_weather())
 
 # Сделать из метки нормальное время с юнит-тестом
 # "observation_epoch":"1462644000",
