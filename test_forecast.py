@@ -1,0 +1,5 @@
+import forecast
+
+def test_forecast_to_text():
+  fcst = forecast.Forecast({'avewind': {'dir': 'SE', 'mph': 15, 'kph': 24, 'degrees': 146}, 'qpf_allday': {'in': 0.0, 'mm': 0}, 'skyicon': '', 'maxwind': {'dir': 'SE', 'mph': 20, 'kph': 32, 'degrees': 146}, 'date': {'tz_long': 'Europe/Moscow', 'weekday': 'Saturday', 'pretty': '7:00 PM MSK on May 14, 2016', 'month': 5, 'ampm': 'PM', 'epoch': '1463241600', 'min': '00', 'year': 2016, 'tz_short': 'MSK', 'sec': 0, 'day': 14, 'monthname': 'May', 'hour': 19, 'monthname_short': 'May', 'yday': 134, 'weekday_short': 'Sat', 'isdst': '0'}, 'qpf_day': {'in': 0.0, 'mm': 0}, 'low': {'celsius': '8', 'fahrenheit': '47'}, 'icon': 'clear', 'conditions': 'Clear', 'minhumidity': 0, 'icon_url': 'http://icons.wxug.com/i/c/k/clear.gif', 'snow_night': {'in': 0.0, 'cm': 0.0}, 'snow_day': {'in': 0.0, 'cm': 0.0}, 'qpf_night': {'in': 0.0, 'mm': 0}, 'snow_allday': {'in': 0.0, 'cm': 0.0}, 'pop': 0, 'avehumidity': 38, 'period': 2, 'high': {'celsius': '21', 'fahrenheit': '70'}, 'maxhumidity': 0})
+  pass

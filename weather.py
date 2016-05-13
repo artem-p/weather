@@ -20,8 +20,8 @@ class CurrentWeather:
     if self.json_weather:
       current_observation = self.json_weather['current_observation']
       self.city = current_observation['display_location']['city']
-      time = datetime.datetime.fromtimestamp(int(current_observation['observation_epoch']))
-      self.time = time.strftime("%d.%m.%Y %H:%M")
+      timestamp = int(current_observation['observation_epoch'])
+      self.time = time_str_from_epoch(timestamp)
       self.conditions = current_observation['weather']
       self.temp = current_observation['temp_c']
       self.feelslike = int(current_observation['feelslike_c'])
@@ -42,10 +42,9 @@ class CurrentWeather:
     return text
 
 
-
-
 def get_current_weather():
   query = 'http://api.wunderground.com/api/67baf1d645fb0443/conditions/lang:RU/q/Russia/St_Petersburg.json'
+  # todo если сервер не отвечает
   current_weather_response = requests.get(query)
   current_weather_response.json()['current_observation']
   current_weather_response.text
