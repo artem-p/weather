@@ -47,7 +47,6 @@ def get_current_weather():
   # todo если сервер не отвечает
   current_weather_response = requests.get(query)
   current_weather_response.json()['current_observation']
-  current_weather_response.text
 
   current_weather = CurrentWeather(current_weather_response.json())
   return current_weather.to_text()
