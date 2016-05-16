@@ -18,8 +18,7 @@ class Forecast:
     text = """%s
 %s
 %s
-%s
-""" % (s_time, s_max_temp, s_min_temp, self.conditions )
+%s""" % (s_time, s_max_temp, s_min_temp, self.conditions )
     return text
 
 
