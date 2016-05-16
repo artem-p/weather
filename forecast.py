@@ -35,6 +35,10 @@ tomorrowForecast = Forecast(days_forecast[1])
 
 
 tomorrowForecast.to_text()
+
+
+if __name__ == "__main__":
+  print(tomorrowForecast.to_text())
 # if (days_forecast and len(days_forecast) > 1 ):
 #   days_forecast[1]
 
